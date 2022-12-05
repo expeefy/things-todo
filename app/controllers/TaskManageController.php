@@ -19,11 +19,7 @@ class TaskManageController extends Controller
         );
 
             if ($success) {
-                echo "Task added successfully.<br>";
-                echo $this->tag->linkTo([
-                    'index',
-                    'Return',
-                ]);
+                $this->response->redirect('index/');
             } else {
                 echo "Error: ";
 
@@ -54,11 +50,7 @@ class TaskManageController extends Controller
         $success = $task->delete();
 
             if ($success) {
-                echo "Task removed successfully.<br>";
-                echo $this->tag->linkTo([
-                    'index',
-                    'Return',
-                ]);
+                $this->response->redirect('index/');
             } else {
                 echo "Error: ";
 
@@ -90,11 +82,12 @@ class TaskManageController extends Controller
             ["task", ],);
 
             if ($success) {
-                echo "Task updated successfully.<br>";
-                echo $this->tag->linkTo([
-                    'index',
-                    'Return',
-                ]);
+                $this->response->redirect('index/');
+                // echo "Task updated successfully.<br>";
+                // echo $this->tag->linkTo([
+                //     'index',
+                //     'Return',
+                // ]);
             } else {
                 echo "Error: ";
 

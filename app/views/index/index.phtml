@@ -31,7 +31,8 @@ if ($tasks->count() > 0) {
             <tr>
                 <td><?php echo $task->id; ?></td>
                 <td><?php echo $task->task; ?></td>
-                <td><?php echo $this->tag->submitButton("remove"); ?></td>
+                <td><?php   echo $this->tag->form("index/remove/" .$task->id);
+                            echo $this->tag->submitButton("remove"); ?></td>
             </tr>
         <?php } ?>
         </tbody>
