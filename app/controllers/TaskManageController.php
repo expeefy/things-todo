@@ -13,13 +13,14 @@ class TaskManageController extends Controller
     {
         $task = new Tasks;
 
+        if ($task != NULL) {
         $success = $task->save(
             $this->request->getPost(),
             ["task", ],
         );
 
             if ($success) {
-                $this->response->redirect('index/');
+                $this->response->redirect('taskmanage');
             } else {
                 echo "Error: ";
 
@@ -27,13 +28,24 @@ class TaskManageController extends Controller
 
                 foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
+                    echo $this->tag->linkTo([
+                        'taskmanage',
+                        'Return',
+                    ]);
                 }
-            }
+           }
+        } else {
+            echo "Field cannot be empty.<br>";
+            echo $this->tag->linkTo([
+                    'taskmanage',
+                    'Return',
+                ]);
+        }
 
             $this->view->disable();
     }
 
-    public function removeAction() {
+    public function recycleAction() {
         $taskId = $this->request->getPost('id');
 
         $task = Tasks::find(
@@ -46,8 +58,9 @@ class TaskManageController extends Controller
         )->getFirst();
 
 
-
-        $success = $task->delete();
+        if ($taskId != NULL) {
+        $task->status = 1;
+        $success = $task->save();
 
             if ($success) {
                 $this->response->redirect('index/');
@@ -60,6 +73,16 @@ class TaskManageController extends Controller
                     echo $message->getMessage(), "<br/>";
                 }
             }
+        } else {
+            echo "Field cannot be empty.<br>";
+            echo $this->tag->linkTo([
+                    'taskmanage',
+                    'Return',
+                ]);
+
+        }
+
+
 
             $this->view->disable();
     }
@@ -77,6 +100,8 @@ class TaskManageController extends Controller
             ]
         )->getFirst();
 
+
+        if (($taskId != NULL) && ($task != NULL)) {
         $success = $task->save(
             $this->request->getPost(),
             ["task", ],);
@@ -97,6 +122,15 @@ class TaskManageController extends Controller
                     echo $message->getMessage(), "<br/>";
                 }
             }
+        } else {
+            echo "All fields must contain data.<br>";
+            echo $this->tag->linkTo([
+                    'taskmanage',
+                    'Return',
+                ]);
+        }
+
+
 
             $this->view->disable();
     }

@@ -13,7 +13,7 @@
 
 </form>
 
-<?php echo $this->tag->form("taskmanage/remove"); ?>
+<?php echo $this->tag->form("taskmanage/recycle"); ?>
 
     <p>
         <label for="id">Task</label>
@@ -21,7 +21,7 @@
     </p>
 
     <p>
-        <?php echo $this->tag->submitButton("remove"); ?>
+        <?php echo $this->tag->submitButton("recycle"); ?>
     </p>
 
 </form>
@@ -40,3 +40,8 @@
     </p>
 
 </form>
+
+<?php echo $this->tag->linkTo([
+                    'index',
+                    'Main Page',
+                ]); ?>

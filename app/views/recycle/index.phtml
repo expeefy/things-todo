@@ -1,22 +1,22 @@
 <?php
 
-echo "<h1>Simple To-do List</h1>";
+echo "<h1>Recycle Bin</h1>";
 
 echo PHP_EOL;
 
 echo PHP_EOL;
 
-echo $this->tag->linkTo([
-    'taskmanage',
-    'Manage',
-    'class' => 'btn btn-primary'
-]);
+// echo $this->tag->linkTo([
+//     'taskmanage',
+//     'Manage',
+//     'class' => 'btn btn-primary'
+// ]);
 
-echo "   ";
+// echo "   ";
 
 echo $this->tag->linkTo([
-    'recycle',
-    'Recycle Bin',
+    'index',
+    'Main Page',
     'class' => 'btn btn-primary'
 ]);
 
@@ -33,19 +33,21 @@ if ($tasks->count() > 0) {
         
         <body>
         <?php foreach ($tasks as $task) {
-                if ($task->status == 0) { 
+                if ($task->status == 1) { 
                     $counter++; ?>
             <tr>
                 <td><?php echo $task->id; ?></td>
                 <td><?php echo $task->task; ?></td>
-                <td><?php   echo $this->tag->form("index/recycle/" .$task->id);
-                            echo $this->tag->submitButton("recycle"); ?></form>
+                <td><?php   echo $this->tag->form("index/restore/" .$task->id);
+                            echo $this->tag->submitButton("restore"); ?></form>
+                    <?php   echo $this->tag->form("index/delete/" .$task->id);
+                            echo $this->tag->submitButton("delete"); ?></form>            
             </tr>
         <?php }} ?>
         <tfoot>
-        <tr>
-            <td colspan="3">Tasks to do: <?php echo $counter; ?></td>
-        </tr>
+            <tr>
+                <td colspan="3">Tasks to do: <?php echo $counter; ?></td>
+            </tr>
         </tfoot>
         </tbody>
     </table>

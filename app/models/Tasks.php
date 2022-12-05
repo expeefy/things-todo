@@ -6,4 +6,5 @@ class Tasks extends Model
 {
     public $id;
     public $task;
+    public $status;
 }
