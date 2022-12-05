@@ -1,0 +1,27 @@
+<h2>Add/Remove Tasks</h2>
+
+<?php echo $this->tag->form("taskmanage/add"); ?>
+
+    <p>
+        <label for="name">Task</label>
+        <?php echo $this->tag->textField("task"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("Add"); ?>
+    </p>
+
+</form>
+
+<?php echo $this->tag->form("taskmanage/remove"); ?>
+
+    <p>
+        <label for="id">Task</label>
+        <?php echo $this->tag->textField("id"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("remove"); ?>
+    </p>
+
+</form>

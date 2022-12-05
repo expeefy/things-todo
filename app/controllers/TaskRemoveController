@@ -1,0 +1,47 @@
+<?php
+
+use Phalcon\Mvc\Controller;
+
+class TaskRemoveController extends Controller
+{
+    public function indexAction()
+    {
+
+    }
+
+    
+    public function removeAction() {
+        $taskId = $this->request->getPost('id');
+
+        $task = Tasks::find(
+            [
+                'id = :id:',
+                'bind' => [
+                    'id' => $taskId,
+                ],
+            ]
+        )->getFirst();
+
+
+
+        $success = $task->delete();
+
+            if ($success) {
+                echo "Task removed successfully.<br>";
+                echo $this->tag->linkTo([
+                    'index',
+                    'Return',
+                ]);
+            } else {
+                echo "Error: ";
+
+                $messages = $task->getMessages();
+
+                foreach ($messages as $message) {
+                    echo $message->getMessage(), "<br/>";
+                }
+            }
+
+            $this->view->disable();
+    }
+}
