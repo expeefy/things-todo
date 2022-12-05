@@ -74,7 +74,38 @@ class TaskManageController extends Controller
 
     public function updateAction() //func to upd data
     {
+        $taskId = $this->request->getPost('id');
 
+        $task = Tasks::find(
+            [
+                'id = :id:',
+                'bind' => [
+                    'id' => $taskId,
+                ],
+            ]
+        )->getFirst();
+
+        $success = $task->save(
+            $this->request->getPost(),
+            ["task", ],);
+
+            if ($success) {
+                echo "Task updated successfully.<br>";
+                echo $this->tag->linkTo([
+                    'index',
+                    'Return',
+                ]);
+            } else {
+                echo "Error: ";
+
+                $messages = $task->getMessages();
+
+                foreach ($messages as $message) {
+                    echo $message->getMessage(), "<br/>";
+                }
+            }
+
+            $this->view->disable();
     }
 
 }

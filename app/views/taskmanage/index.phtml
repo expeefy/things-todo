@@ -25,3 +25,18 @@
     </p>
 
 </form>
+
+<?php echo $this->tag->form("taskmanage/update"); ?>
+
+    <p>
+        <label for="id">Task Id</label>
+        <?php echo $this->tag->textField("id"); ?>
+        <label for="id">Task</label>
+        <?php echo $this->tag->textField("task"); ?>
+    </p>
+
+    <p>
+        <?php echo $this->tag->submitButton("update"); ?>
+    </p>
+
+</form>
