@@ -7,6 +7,14 @@ echo PHP_EOL;
 echo PHP_EOL;
 
 echo $this->tag->linkTo([
+    'taskmanage/taskadd',
+    'Add New',
+    'class' => 'btn btn-primary'
+]);
+
+echo "   ";
+
+echo $this->tag->linkTo([
     'taskmanage',
     'Manage',
     'class' => 'btn btn-primary'
@@ -35,12 +43,29 @@ if ($tasks->count() > 0) {
         <body>
         <?php foreach ($tasks as $task) {
                 if ($task->status == 0) { 
-                    $counter++; ?>
+                    $counter++; 
+                    ?>
             <tr>
-                <td><?php echo $task->id; ?></td>
-                <td><?php echo $task->task; ?></td>
-                <td><?php echo $this->tag->form("index/recycle/" .$task->id);
-                          echo $this->tag->submitButton("recycle"); ?></form>
+                <td><?php   echo $task->id;?></td>
+                <td><?php   echo $task->task; ?></td>
+                <td><?php   /*echo $this->tag->form("index/recycle/" . $task->id); 
+                            echo $this->tag->submitButton("recycle"); ?></form>*/  
+                    // echo $this->tag->form("taskmanage/taskedit/" . $task->id); 
+                            // echo $this->tag->submitButton("edit");
+                            echo $this->tag->linkTo([
+                                'index/recycle/' . $task->id,
+                                'Recycle',
+                                'class' => 'btn btn-primary'
+                            ]);
+                            echo " ";
+                            echo $this->tag->linkTo([
+                                'taskmanage/taskedit/' . $task->id,
+                                'Edit',
+                                'class' => 'btn btn-primary'
+                            ]);
+                            ?>     
+                            
+
             </tr>
         <?php }} ?>
         <tfoot>
@@ -52,3 +77,5 @@ if ($tasks->count() > 0) {
     </table>
     <?php
 }
+?>
+

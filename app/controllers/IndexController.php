@@ -8,6 +8,7 @@ class IndexController extends Controller
     public function indexAction()
     {
         $this->view->tasks = Tasks::find();
+        //$this->view->aCurrent = false;
     }
 
     public function deleteAction($id) {
@@ -42,7 +43,7 @@ class IndexController extends Controller
             $this->view->disable();
     }
 
-    public function recycleAction($id) {
+    public function recycleAction($id) { //RECYCLE ACTION
         $taskId = $id;
 
         $task = Tasks::find(
@@ -102,6 +103,50 @@ class IndexController extends Controller
                     echo $message->getMessage(), "<br/>";
                 }
             }
+
+            $this->view->disable();
+    }
+
+    public function updateAction($id) //func to upd data
+    {
+        $taskId = $id;
+        //$id = $this->request->getPost('id');
+        //$this->view->task = Tasks::findFirst($id);
+
+        $task = Tasks::find(
+            [
+                'id = :id:',
+                'bind' => [
+                    'id' => $taskId,
+                ],
+            ]
+        )->getFirst();
+
+        if (($taskId != NULL) && ($task != NULL)) {
+        $success = $task->save(
+            $this->request->getPost(),
+            ["task", ]);
+
+            if ($success) {
+                $this->response->redirect("index");
+            } else {
+                echo "Error: ";
+
+                $messages = $task->getMessages();
+
+                foreach ($messages as $message) {
+                    echo $message->getMessage(), "<br/>";
+                }
+            }
+        } else {
+            echo "All fields must contain data.<br>";
+            echo $this->tag->linkTo([
+                    'taskmanage/taskedit',
+                    'Return',
+                ]);
+        }
+
+
 
             $this->view->disable();
     }

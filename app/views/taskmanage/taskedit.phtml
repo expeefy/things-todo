@@ -1,0 +1,26 @@
+<h2>Edit Task</h2>
+
+
+    <?php echo $this->tag->form("index/update/" .$task->id); ?>
+
+        <p>
+
+            <label for="task">Task: </label>
+            <?php echo $this->tag->textField("task"); ?>
+        </p>
+
+        <p>
+            <?php echo $this->tag->submitButton("Update") ?>
+        </p>
+
+    </form>
+</html>
+
+<?php echo $this->tag->linkTo([
+                    'index',
+                    '<< Back',
+                ]); ?>
+
+                <div>
+                    <?php echo $task->task ?>
+                </div>
