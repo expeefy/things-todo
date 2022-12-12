@@ -6,7 +6,7 @@
         <p>
 
             <label for="task">Task: </label>
-            <?php echo $this->tag->textField("task"); ?>
+            <?php echo $this->tag->textField(["value" => $task->task, "id" => $task->id, "name" => "task"]); ?>
         </p>
 
         <p>

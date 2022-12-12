@@ -1,16 +1,32 @@
 <?php
 
 use Phalcon\Mvc\Controller;
+use Phalcon\Mvc\View;
+use Phalcon\Http\Request;
 
 class TaskManageController extends Controller
 {
     public function indexAction()
     {
+        $this->view->tasks = Tasks::find();
+            //$this->view->idClicked;
+    }
 
+    public function taskeditAction($id) {
+        // $this->view->pick("taskmanage/taskedit");
+
+        // return $_GET['id'];
+
+        $this->view->task = Tasks::findFirst($id);
+    }
+
+    public function taskaddAction() {
+        $this->view->pick("taskmanage/taskadd");
     }
 
     public function addAction()
     {
+
         $task = new Tasks;
 
         if ($task != NULL) {
@@ -20,7 +36,7 @@ class TaskManageController extends Controller
         );
 
             if ($success) {
-                $this->response->redirect('taskmanage');
+                $this->response->redirect('taskmanage/taskadd');
             } else {
                 echo "Error: ";
 
@@ -29,7 +45,7 @@ class TaskManageController extends Controller
                 foreach ($messages as $message) {
                     echo $message->getMessage(), "<br/>";
                     echo $this->tag->linkTo([
-                        'taskmanage',
+                        'taskmanage/taskadd',
                         'Return',
                     ]);
                 }
@@ -37,7 +53,7 @@ class TaskManageController extends Controller
         } else {
             echo "Field cannot be empty.<br>";
             echo $this->tag->linkTo([
-                    'taskmanage',
+                    'taskmanage/taskadd',
                     'Return',
                 ]);
         }
@@ -89,7 +105,7 @@ class TaskManageController extends Controller
 
     public function updateAction() //func to upd data
     {
-        $taskId = $this->request->getPost('id');
+        $taskId = $id;
 
         $task = Tasks::find(
             [
@@ -100,14 +116,16 @@ class TaskManageController extends Controller
             ]
         )->getFirst();
 
+        $tasks->task = $request->getPost("task");
+        $tasks->save();
 
-        if (($taskId != NULL) && ($task != NULL)) {
-        $success = $task->save(
+        if (/*($taskId != NULL) && */($task != NULL)) {
+        $success = $task->task->save(
             $this->request->getPost(),
             ["task", ],);
 
             if ($success) {
-                $this->response->redirect('index/');
+                $this->response->redirect("taskmanage");
                 // echo "Task updated successfully.<br>";
                 // echo $this->tag->linkTo([
                 //     'index',
@@ -125,7 +143,7 @@ class TaskManageController extends Controller
         } else {
             echo "All fields must contain data.<br>";
             echo $this->tag->linkTo([
-                    'taskmanage',
+                    'taskmanage/taskedit',
                     'Return',
                 ]);
         }
