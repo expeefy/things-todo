@@ -21,7 +21,9 @@ Also make sure database details (such as host and user names, password AND datab
 
 
 In phpmyadmin, insert following SQL statement:
+```
 'CREATE DATABASE todos;'
+```
 
 Then, in 'todos' database insert following SQL statement:
 ```
@@ -36,31 +38,31 @@ CREATE TABLE `tasks`
 
 ## Usage and Functionality
 First thing you see when you open up the webpage are 2 buttons, which do exactly what their name states.
-<img src="readme/img/1.png" alt="1" align="center" />
+<kbd><img src="readme/img/1.png" alt="1" align="center" /></kbd>
 
 Most logical thing to do would be to add a new task by clicking _Add Task_ button, which will redirect you to corresponding action form.
-<img src="readme/img/2.png" alt="2" align="center" />
+<kbd><img src="readme/img/2.png" alt="2" align="center" /></kbd>
 > Clicking add will insert specified task to the database and assign a serial id to it (last one serves as a tool for lookup within logic of the program and may techically be hidden from regular user).
 
 Upon confirming action with _Add_ button you will still be redirected to the same page, assuming you would want to add multiple tasks in the same session. The _Back_ button will return you to the main page, where freshly added task awaits us.
-<img src="readme/img/3.png" alt="3" align="center" />
+<kbd><img src="readme/img/3.png" alt="3" align="center" /></kbd>
 
 From here you have 2 ways of managing a task:
 - Recycle - assumes you are probably done with the task and will move it to recycle bin.
 - Edit - assumes you made a typo of some sort and want to edit the task.
 
 Clicking _Edit_ will redirect you to corresponding action form.
-<img src="readme/img/4.png" alt="4" align="center" />
+<kbd><img src="readme/img/4.png" alt="4" align="center" /></kbd>
 
 Inserting a different name and confirming it with _Update_ button will return you to the main page only to see your task has been edited.
-<img src="readme/img/5.png" alt="5" /> <img src="readme/img/6.png" alt="6" />
+<kbd><img src="readme/img/5.png" alt="5" /> <img src="readme/img/6.png" alt="6" /></kbd>
 
-<img src="readme/img/7.png" alt="7" align="center"  />
+<kbd><img src="readme/img/7.png" alt="7" align="center"  /></kbd>
 
 Clicking _Recycle_ will immediately move the task to recycle bin.
 
 To go to Recycle Bin, click corresponding button at the upper part of the page. If you have any recycled tasks they will appear there.
-<img src="readme/img/8.png" alt="8" align="center" />
+<kbd><img src="readme/img/8.png" alt="8" align="center" /></kbd>
 
 2 action buttons next to recycled task do exactly what they say:
 - Restore - restores a task back to the tasklist
@@ -68,6 +70,6 @@ To go to Recycle Bin, click corresponding button at the upper part of the page. 
 
 Clicking _Restore_ will redirect you to the same page to see the task you restored is now absent from Recycle Bin.
 Clicking _Main Page_ will redirect you back to Main Page and restored task will be back on the list.
-<img src="readme/img/9.png" alt="9" align="center" />
+<kbd><img src="readme/img/9.png" alt="9" align="center" /></kbd>
 
-<img src="readme/img/10.png" alt="10" align="center" />
+<kbd><img src="readme/img/10.png" alt="10" align="center" /></kbd>
