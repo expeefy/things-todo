@@ -17,7 +17,7 @@ echo PHP_EOL;
 echo $this->tag->linkTo([
     'index',
     'Main Page',
-    'class' => 'btn btn-primary'
+    'class' => 'btn btn-primary btn-lg'
 ]);
 
 if ($tasks->count() > 0) {
@@ -43,13 +43,13 @@ if ($tasks->count() > 0) {
                 <td><?php echo $this->tag->linkTo([
                                 'index/restore/' . $task->id,
                                 'Restore',
-                                'class' => 'btn btn-primary'
+                                'class' => 'btn btn-secondary'
                             ]);
                             echo " ";
                             echo $this->tag->linkTo([
                                 'index/delete/' . $task->id,
                                 'Delete',
-                                'class' => 'btn btn-primary'
+                                'class' => 'btn btn-secondary'
                             ]);
                             ?>        
             </tr>

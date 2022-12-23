@@ -8,7 +8,12 @@
     </p>
 
     <p>
-        <?php echo $this->tag->submitButton("Add"); ?>
+        <?php echo $this->tag->submitButton([
+            "value" => "Add",
+            "class" => "btn btn-secondary"
+                                            
+    
+    ]); ?>
     </p>
 
 </form>

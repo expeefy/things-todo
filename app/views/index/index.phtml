@@ -9,23 +9,23 @@ echo PHP_EOL;
 echo $this->tag->linkTo([
     'taskmanage/taskadd',
     'Add New',
-    'class' => 'btn btn-primary'
+    'class' => 'btn btn-primary btn-lg'
 ]);
 
-echo "   ";
+// echo "   ";
 
-echo $this->tag->linkTo([
-    'taskmanage',
-    'Manage',
-    'class' => 'btn btn-primary'
-]);
+// echo $this->tag->linkTo([
+//     'taskmanage',
+//     'Manage',
+//     'class' => 'btn btn-primary'
+// ]);
 
 echo "   ";
 
 echo $this->tag->linkTo([
     'recycle',
     'Recycle Bin',
-    'class' => 'btn btn-primary'
+    'class' => 'btn btn-primary btn-lg'
 ]);
 
 if ($tasks->count() > 0) {
@@ -55,13 +55,13 @@ if ($tasks->count() > 0) {
                             echo $this->tag->linkTo([
                                 'index/recycle/' . $task->id,
                                 'Recycle',
-                                'class' => 'btn btn-primary'
+                                'class' => 'btn btn-secondary'
                             ]);
                             echo " ";
                             echo $this->tag->linkTo([
                                 'taskmanage/taskedit/' . $task->id,
                                 'Edit',
-                                'class' => 'btn btn-primary'
+                                'class' => 'btn btn-secondary'
                             ]);
                             ?>     
                             
