@@ -1,17 +1,7 @@
-//////////////////////////////////////////////////////
-//                                                  //
-//      Simple To-Do List Installation Readme       //
-//                                                  //
-//      Installation assumes:                       //
-//          +XAMPP                                  //
-//          +PHP Version 7.3.33                     //
-//          +Phalcon 3.4                            //
-//                                                  //
-//////////////////////////////////////////////////////
-
 # Simple To-Do List Installation
 First and foremost, make sure XAMPP with correct versions of required components is installed:
-> PHP Version 7.3.33 
+> PHP Version 7.3.33
+
 > Phalcon 3.4
 
 If version of any component differs, you may get multiple errors and unfunctional program in return.
@@ -34,7 +24,7 @@ In phpmyadmin, insert following SQL statement:
 'CREATE DATABASE todos;'
 
 Then, in 'todos' database insert following SQL statement:
-'
+```
 CREATE TABLE `tasks`
 (
     `id`    int unsigned NOT NULL AUTO_INCREMENT,
@@ -42,7 +32,7 @@ CREATE TABLE `tasks`
     `status` tinyint(1) DEFAULT 0,
     PRIMARY KEY (`id`)
 );
-'
+```
 
 ## Usage and Functionality
 First thing you see when you open up the webpage are 2 buttons, which do exactly what their name states.
@@ -65,7 +55,7 @@ Clicking _Edit_ will redirect you to corresponding action form.
 Inserting a different name and confirming it with _Update_ button will return you to the main page only to see your task has been edited.
 <img src="readme/img/5.png" alt="5" /> <img src="readme/img/6.png" alt="6" />
 
-<img src="readme/img/7.png" alt="7" align="center" />
+<img src="readme/img/7.png" alt="7" align="center"  />
 
 Clicking _Recycle_ will immediately move the task to recycle bin.
 
