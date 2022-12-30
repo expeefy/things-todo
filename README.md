@@ -56,6 +56,7 @@ Clicking _Edit_ will redirect you to corresponding action form.
 <kbd><img src="readme/img/4.png" alt="4" align="center" /></kbd>
 
 Inserting a different name and confirming it with _Update_ button will return you to the main page only to see your task has been edited.
+
 <kbd><img src="readme/img/5.png" alt="5" /> <img src="readme/img/6.png" alt="6" /></kbd>
 
 <kbd><img src="readme/img/7.png" alt="7" align="center"  /></kbd>

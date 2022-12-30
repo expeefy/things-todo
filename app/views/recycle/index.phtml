@@ -36,18 +36,18 @@ if ($tasks->count() > 0) {
         <?php foreach ($tasks as $task) {
                 if ($task->status == 1) { 
                     $counter++; 
-                    /*$this->$aCurrent = $task->id;*/?>
+        ?>
             <tr>
                 <td><?php echo $task->id; ?></td>
                 <td><?php echo $task->task; ?></td>
                 <td><?php echo $this->tag->linkTo([
-                                'index/restore/' . $task->id,
+                                'taskmanage/restore/' . $task->id,
                                 'Restore',
                                 'class' => 'btn btn-secondary'
                             ]);
                             echo " ";
                             echo $this->tag->linkTo([
-                                'index/delete/' . $task->id,
+                                'taskmanage/delete/' . $task->id,
                                 'Delete',
                                 'class' => 'btn btn-secondary'
                             ]);

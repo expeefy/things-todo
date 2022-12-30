@@ -12,10 +12,71 @@ class TaskManageController extends Controller
             //$this->view->idClicked;
     }
 
-    public function taskeditAction($id) {
-        // $this->view->pick("taskmanage/taskedit");
+    public function deleteAction($id) {
+        $taskId = $id;
 
-        // return $_GET['id'];
+        $task = Tasks::find(
+            [
+                'id = :id:',
+                'bind' => [
+                    'id' => $taskId,
+                ],
+            ]
+        )->getFirst();
+
+
+
+        $success = $task->status = 1;
+        $task->delete();
+
+            if ($success) {
+                $this->response->redirect('index/');
+            } else {
+                echo "Error: ";
+
+                $messages = $task->getMessages();
+
+                foreach ($messages as $message) {
+                    echo $message->getMessage(), "<br/>";
+                }
+            }
+
+            $this->view->disable();
+    }
+
+    public function restoreAction($id) {
+        $taskId = $id;
+
+        $task = Tasks::find(
+            [
+                'id = :id:',
+                'bind' => [
+                    'id' => $taskId,
+                ],
+            ]
+        )->getFirst();
+
+
+
+        $task->status = 0;
+        $success = $task->save();
+
+            if ($success) {
+                $this->response->redirect('recycle/');
+            } else {
+                echo "Error: ";
+
+                $messages = $task->getMessages();
+
+                foreach ($messages as $message) {
+                    echo $message->getMessage(), "<br/>";
+                }
+            }
+
+            $this->view->disable();
+    }
+
+    public function taskeditAction($id) {
 
         $this->view->task = Tasks::findFirst($id);
     }
@@ -103,7 +164,7 @@ class TaskManageController extends Controller
             $this->view->disable();
     }
 
-    public function updateAction() //func to upd data
+    public function updateAction($id) //func to upd data
     {
         $taskId = $id;
 
@@ -116,21 +177,13 @@ class TaskManageController extends Controller
             ]
         )->getFirst();
 
-        $tasks->task = $request->getPost("task");
-        $tasks->save();
-
-        if (/*($taskId != NULL) && */($task != NULL)) {
-        $success = $task->task->save(
+        if (($taskId != NULL) && ($task != NULL)) {
+        $success = $task->save(
             $this->request->getPost(),
-            ["task", ],);
+            ["task", ]);
 
             if ($success) {
-                $this->response->redirect("taskmanage");
-                // echo "Task updated successfully.<br>";
-                // echo $this->tag->linkTo([
-                //     'index',
-                //     'Return',
-                // ]);
+                $this->response->redirect("index");
             } else {
                 echo "Error: ";
 
