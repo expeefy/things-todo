@@ -122,8 +122,8 @@ class TaskManageController extends Controller
             $this->view->disable();
     }
 
-    public function recycleAction() {
-        $taskId = $this->request->getPost('id');
+    public function recycleAction($id) { //RECYCLE ACTION
+        $taskId = $id;
 
         $task = Tasks::find(
             [
@@ -135,9 +135,9 @@ class TaskManageController extends Controller
         )->getFirst();
 
 
-        if ($taskId != NULL) {
-        $task->status = 1;
-        $success = $task->save();
+
+        $success = $task->status = 1;
+        $task->save();
 
             if ($success) {
                 $this->response->redirect('index/');
@@ -150,16 +150,6 @@ class TaskManageController extends Controller
                     echo $message->getMessage(), "<br/>";
                 }
             }
-        } else {
-            echo "Field cannot be empty.<br>";
-            echo $this->tag->linkTo([
-                    'taskmanage',
-                    'Return',
-                ]);
-
-        }
-
-
 
             $this->view->disable();
     }

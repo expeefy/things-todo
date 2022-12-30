@@ -15,8 +15,10 @@ Code assumes, that database name is _todos_. If you'd like your database name to
 Also make sure database details (such as host and user names, password AND database name) correspond to the ones in your configuration and match with '/public/index.php' settings.
 
 <details><summary><b>Show Instructions</b></summary>
+Starting on line 60 of '/public/index.php' is the database adapter service where all the accessibility credentials are mentioned.
 
-
+<kbd><img src="readme/img/11.png" alt="1" align="center" /></kbd>
+> If you choose to have different credentials, make sure to have them changed here.
 </details>
 
 
@@ -35,6 +37,10 @@ CREATE TABLE `tasks`
     PRIMARY KEY (`id`)
 );
 ```
+
+After all these manipulations, launching and starting XAMPPs' Apache should run the program. Accessing correct IP address and port should lead you to the main page of the program.
+<kbd><img src="readme/img/0.png" alt="1" align="center" /></kbd>
+
 
 ## Usage and Functionality
 First thing you see when you open up the webpage are 2 buttons, which do exactly what their name states.
