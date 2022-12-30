@@ -45,6 +45,7 @@ Most logical thing to do would be to add a new task by clicking _Add Task_ butto
 > Clicking add will insert specified task to the database and assign a serial id to it (last one serves as a tool for lookup within logic of the program and may techically be hidden from regular user).
 
 Upon confirming action with _Add_ button you will still be redirected to the same page, assuming you would want to add multiple tasks in the same session. The _Back_ button will return you to the main page, where freshly added task awaits us.
+
 <kbd><img src="readme/img/3.png" alt="3" align="center" /></kbd>
 
 From here you have 2 ways of managing a task:
