@@ -38,7 +38,7 @@ CREATE TABLE `tasks`
 );
 ```
 
-After all these manipulations, launching and starting XAMPPs' Apache should run the program. Accessing correct IP address and port should lead you to the main page of the program.
+After all these manipulations, launching and starting XAMPPs' Apache should run the program. Accessing IP address (localhost) and port should lead you to the main page of the program.
 <kbd><img src="readme/img/0.png" alt="1" align="center" /></kbd>
 
 
