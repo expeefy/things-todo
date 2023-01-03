@@ -7,7 +7,7 @@ First and foremost, make sure XAMPP with correct versions of required components
 If version of any component differs, you may get multiple errors and unfunctional program in return.
 
 ## Getting Started
-Place _todo_ folder to your '/xampp/htdocs/' directory.
+When cloning program folder, make sure to name it _todo_, then place it to your '/xampp/htdocs/' directory.
 
 ## Creating required database and table
 Code assumes, that database name is _todos_. If you'd like your database name to be different, change said name to your liking in all queries and proceed to '/public/index.php' and change database name to the one you chose.
