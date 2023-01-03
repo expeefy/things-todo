@@ -9,25 +9,20 @@ class TaskManageController extends Controller
     public function indexAction()
     {
         $this->view->tasks = Tasks::find();
-            //$this->view->idClicked;
     }
 
     public function deleteAction($id) {
-        $taskId = $id;
 
         $task = Tasks::find(
             [
                 'id = :id:',
                 'bind' => [
-                    'id' => $taskId,
+                    'id' => $id,
                 ],
             ]
         )->getFirst();
 
-
-
-        $success = $task->status = 1;
-        $task->delete();
+        $success = $task->delete();
 
             if ($success) {
                 $this->response->redirect('index/');
@@ -45,13 +40,11 @@ class TaskManageController extends Controller
     }
 
     public function restoreAction($id) {
-        $taskId = $id;
-
         $task = Tasks::find(
             [
                 'id = :id:',
                 'bind' => [
-                    'id' => $taskId,
+                    'id' => $id,
                 ],
             ]
         )->getFirst();
@@ -90,10 +83,8 @@ class TaskManageController extends Controller
 
         $task = new Tasks;
 
-        if ($task != NULL) {
         $success = $task->save(
-            $this->request->getPost(),
-            ["task", ],
+            $this->request->getPost()
         );
 
             if ($success) {
@@ -111,14 +102,6 @@ class TaskManageController extends Controller
                     ]);
                 }
            }
-        } else {
-            echo "Field cannot be empty.<br>";
-            echo $this->tag->linkTo([
-                    'taskmanage/taskadd',
-                    'Return',
-                ]);
-        }
-
             $this->view->disable();
     }
 
@@ -134,10 +117,8 @@ class TaskManageController extends Controller
             ]
         )->getFirst();
 
-
-
-        $success = $task->status = 1;
-        $task->save();
+        $task->status = 1;
+        $success = $task->save();
 
             if ($success) {
                 $this->response->redirect('index/');
